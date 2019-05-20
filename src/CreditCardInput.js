@@ -52,6 +52,7 @@ export default class CreditCardInput extends Component {
     labelStyle: Text.propTypes.style,
     inputStyle: Text.propTypes.style,
     inputContainerStyle: ViewPropTypes.style,
+    labelContainerStyle: ViewPropTypes.style,
 
     validColor: PropTypes.string,
     invalidColor: PropTypes.string,
@@ -110,7 +111,7 @@ export default class CreditCardInput extends Component {
       cardImageFront, cardImageBack, inputContainerStyle,
       values: { number, expiry, cvc, name, type }, focused,
       requiresName, requiresCVC, requiresPostalCode,
-      cardScale, cardFontFamily,
+      cardScale, cardFontFamily, labelContainerStyle,
     } = this.props;
 
     return (
@@ -135,6 +136,7 @@ export default class CreditCardInput extends Component {
             style={s.form}>
           <CCInput
               {...this._inputProps("number")}
+              labelContainerStyle={labelContainerStyle}
               containerStyle={[
                 s.inputContainer,
                 inputContainerStyle,
@@ -150,6 +152,7 @@ export default class CreditCardInput extends Component {
           {requiresName &&
            <CCInput
                {...this._inputProps("name")}
+               labelContainerStyle={labelContainerStyle}
                keyboardType="default"
                containerStyle={[s.inputContainer, inputContainerStyle, {
                  flex: 1,
@@ -161,6 +164,7 @@ export default class CreditCardInput extends Component {
                }]} />}
           <CCInput
               {...this._inputProps("expiry")}
+              labelContainerStyle={labelContainerStyle}
               containerStyle={[s.inputContainer, inputContainerStyle, {
                 flex: 1,
                 flexDirection: "row",
@@ -172,6 +176,7 @@ export default class CreditCardInput extends Component {
           {requiresCVC &&
            <CCInput
                {...this._inputProps("cvc")}
+               labelContainerStyle={labelContainerStyle}
                containerStyle={[s.inputContainer, inputContainerStyle, {
                  flex: 1,
                  flexDirection: "row",
@@ -183,6 +188,7 @@ export default class CreditCardInput extends Component {
           {requiresPostalCode &&
            <CCInput
                {...this._inputProps("postalCode")}
+               labelContainerStyle={labelContainerStyle}
                containerStyle={[s.inputContainer, inputContainerStyle, {
                  flex: 1,
                  flexDirection: "row",
