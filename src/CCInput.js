@@ -12,9 +12,8 @@ import {
 const s = StyleSheet.create({
   baseInputStyle: {
     color: "black",
-    flex: 1
+    flex: 1,
   },
-  
 });
 
 export default class CCInput extends Component {
@@ -29,6 +28,7 @@ export default class CCInput extends Component {
 
     containerStyle: ViewPropTypes.style,
     inputStyle: Text.propTypes.style,
+    labelContainerStyle: Text.propTypes.style,
     labelStyle: Text.propTypes.style,
     validColor: PropTypes.string,
     invalidColor: PropTypes.string,
@@ -47,6 +47,7 @@ export default class CCInput extends Component {
     keyboardType: "numeric",
     containerStyle: {},
     inputStyle: {},
+    labelContainerStyle: {},
     labelStyle: {},
     onFocus: () => {},
     onChange: () => {},
@@ -69,13 +70,13 @@ export default class CCInput extends Component {
 
   render() {
     const { label, value, placeholder, status, keyboardType,
-            containerStyle, inputStyle, labelStyle,
+            containerStyle, inputStyle, labelContainerStyle, labelStyle,
             validColor, invalidColor, placeholderColor } = this.props;
     return (
       <TouchableOpacity onPress={this.focus}
           activeOpacity={0.99}>
         <View style={[containerStyle]}>
-          { !!label && <Text style={[labelStyle]}>{label}</Text>}
+          { !!label && <View style={labelContainerStyle}><Text style={[labelStyle]}>{label}</Text></View>}
           <TextInput ref="input"
               keyboardType={keyboardType}
               autoCapitalise="words"
