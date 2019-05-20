@@ -93,7 +93,7 @@ export default class CCInput extends Component {
               placeholder={placeholder}
               value={value}
               onFocus={this._onFocus}
-              onChangeText={this._onChange} />
+              onChangeText={(text) => this._onChange(text.toUpperCase())} />
         </View>
       </TouchableOpacity>
     );
