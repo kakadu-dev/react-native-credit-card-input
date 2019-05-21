@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import {
   View,
@@ -6,7 +6,8 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  ViewPropTypes
+  ViewPropTypes,
+  Platform,
 } from "react-native";
 
 const s = StyleSheet.create({
@@ -91,9 +92,9 @@ export default class CCInput extends Component {
               underlineColorAndroid={"transparent"}
               placeholderColor={placeholderColor}
               placeholder={placeholder}
-              value={value}
+              value={Platform.OS === "ios" ? value.toUpperCase() : value}
               onFocus={this._onFocus}
-              onChangeText={(text) => this._onChange(text.toUpperCase())} />
+              onChangeText={this._onChange} />
         </View>
       </TouchableOpacity>
     );
